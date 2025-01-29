@@ -17,8 +17,11 @@ struct UserProfile: View {
     
     var body: some View {
         VStack(spacing:20){
+            Image("logo")
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding()
             Text("Personal Information")
-                .font(.headline)
+                .font(.title)
             Image("profile-image-placeholder")
                 .scaledToFit()
                 .padding()

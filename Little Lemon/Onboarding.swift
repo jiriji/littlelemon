@@ -24,16 +24,34 @@ struct Onboarding: View {
     var body: some View {
         NavigationView(){
             VStack(spacing : 20) {
+                        Image("logo")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                VStack{
+                    HStack(alignment: .center, spacing: 40){
+                        VStack(alignment: .leading){
+                            Text("Little Lemon")
+                                .font(.largeTitle)
+                                .foregroundColor(.yellow)
+                            Text("Chicago")
+                                .font(.title)
+                                .foregroundColor(.white)
+                            Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
+                                .foregroundColor(.white)
+                        }
+                        Image("hero-image")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width:150,height: 180)
+                    }
+                }
+                .padding()
+                .background(Color(red: 73 / 255, green: 94 / 255, blue: 87 / 255))
                 NavigationLink(
                     destination: Home(),
                     isActive: $isLoggedIn
                 ) {
                     EmptyView()
                 }
-                Text("Login")
-                    .padding()
-                    .font(.title)
-                    .frame(height: 10)
                 TextField("First Name", text: $firstName)
                     .padding()
                     .background(Color.gray.opacity(0.3))
@@ -66,7 +84,6 @@ struct Onboarding: View {
                         .cornerRadius(4)
                 }
             }
-            .padding()
             .onAppear{
                 if UserDefaults.standard.bool(forKey: kIsLoggedIn) {
                     isLoggedIn = true

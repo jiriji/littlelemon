@@ -61,12 +61,33 @@ struct Menu: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Little Lemon")
-                .font(.title)
-            Text("Chicago")
-                .font(.title)
-            Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
-            TextField("Search menu", text: $searchText)
+                Image("logo")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding()
+            VStack{
+                HStack(alignment: .center, spacing: 40){
+                    VStack(alignment: .leading){
+                        Text("Little Lemon")
+                            .font(.largeTitle)
+                            .foregroundColor(.yellow)
+                        Text("Chicago")
+                            .font(.title)
+                            .foregroundColor(.white)
+                        Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
+                            .foregroundColor(.white)
+                    }
+                    Image("hero-image")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:150,height: 180)
+                }
+                TextField("Search menu...", text: $searchText)
+                    .padding()
+                    .background(Color.gray.opacity(1))
+                    .cornerRadius(8)
+            }
+            .padding()
+            .background(Color(red: 73 / 255, green: 94 / 255, blue: 87 / 255))
             FetchedObjects(
                 predicate: buildPredicate(),
                 sortDescriptors: Menu.buildSortDescriptors()
@@ -91,6 +112,7 @@ struct Menu: View {
                         }
                     }
                 }
+                .listStyle(.plain)
             }
         }
             .onAppear {

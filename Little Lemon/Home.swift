@@ -22,7 +22,7 @@ struct Home: View {
                 .tabItem{
                     Label("Profile", systemImage: "square.and.pencil")
                 }
-                .navigationBarBackButtonHidden(true)
+                .navigationBarBackButtonHidden(false)
         }
         .environment(\.managedObjectContext, persistence.container.viewContext)
     }
